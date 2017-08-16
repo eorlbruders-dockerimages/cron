@@ -26,3 +26,13 @@ pipeline:
         target: email_username
       - source: email
         target: email_recipients
+  trigger:
+    image: plugins/downstream
+    server: https://drone.eorlbruder.de
+    fork: true
+    repositories:
+      	- nginx
+	- gunicorn
+	- explode-acme-json
+	- concat-pure-ftpd-certs
+    secrets: [ downstream_token ]
